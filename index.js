@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'TOKEN';
-const PREFIX = "$";
+const config = require('./config.json');
 
 const fs = require('fs');
 bot.commands = new Discord.Collection();
@@ -18,7 +17,7 @@ bot.on('ready', () => {
 });
  
 bot.on('message', message => {
-    let args = message.content.substring(PREFIX.length).split(" ");
+    let args = message.content.substring(config.prefix.length).split(" ");
  
     switch (args[0]) {
  
@@ -43,8 +42,6 @@ bot.on('message', message => {
         break;
 
      }
- })
+})
 
-
-
-    bot.login(token);
+bot.login(config.token);
